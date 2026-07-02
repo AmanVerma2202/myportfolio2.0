@@ -1,0 +1,129 @@
+.about-container {
+  max-width: 1220px;
+  margin: clamp(6rem, 12vw, 12rem) auto;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4rem);
+}
+.about-description{
+  max-width: 760px;
+  margin: 0 0 1rem;
+  color: var(--page-muted);
+  font-size: 17px !important;
+  line-height: 1.8;
+}
+.about-text-container h1{
+  font-size: 60px;
+}
+
+@media (min-width: 1024px) {
+  .about-container {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.about-image-container {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  .about-image-container {
+    margin-bottom: 0;
+  }
+}
+
+.about-image {
+  border: 1px solid var(--page-line);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 15rem; /* Small screens */
+  height: auto;
+  box-shadow: 0 28px 70px var(--page-shadow);
+}
+
+@media (min-width: 640px) {
+  .about-image {
+    max-width: 20rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .about-image {
+    max-width: 25rem;
+  }
+}
+
+.about-text-container {
+  text-align: center;
+  padding: clamp(1rem, 2.2vw, 1.6rem);
+  border: 1px solid var(--page-line);
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--page-panel-strong), var(--page-panel));
+  box-shadow: 0 24px 70px var(--page-shadow);
+}
+
+@media (min-width: 1024px) {
+  .about-text-container {
+    text-align: left;
+    margin-left: 0;
+    flex-basis: 50%;
+  }
+}
+
+.about-heading {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  color: var(--page-text);
+}
+
+@media (min-width: 640px) {
+  .about-heading {
+    font-size: 1.5rem;
+  }
+  
+}
+
+.highlight {
+  color: var(--page-accent);
+  margin-left: 0.5rem;
+}
+
+.about-description {
+  font-size: 0.875rem;
+}
+
+@media (max-width: 912px) {
+  .about-description {
+    font-size: 1rem;
+  }
+  .about-text-container h1{
+    font-size: 30px;
+  }
+
+  .about-heading{
+    display: flex;
+    justify-content: center;
+  }
+  
+}
+@media(max-width: 480px){
+
+  .about-heading {
+    display: flex;
+    justify-content: center;
+  }
+  .about-text-container h1{
+    font-size: 30px ;
+  }
+
+  .about-description{
+    width: auto;
+  }
+
+}

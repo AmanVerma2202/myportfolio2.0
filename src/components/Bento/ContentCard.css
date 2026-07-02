@@ -1,0 +1,66 @@
+.buttonBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100%;
+  padding: clamp(1rem, 2vw, 1.35rem);
+  text-align: left;
+}
+
+.content-card-kicker {
+  margin: 0 0 0.55rem;
+  color: var(--page-accent);
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.MH {
+  max-width: 20rem;
+  margin: 0;
+  color: var(--page-text);
+  font-size: 1.55rem;
+  line-height: 1.12;
+  text-align: left;
+}
+
+.copy-email-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: fit-content;
+  max-width: 100%;
+  min-height: 2.75rem;
+  margin-top: 1.2rem;
+  padding: 0.72rem 0.92rem;
+  border: 1px solid var(--page-chip-border);
+  border-radius: 8px;
+  background: var(--page-accent);
+  color: var(--page-bg);
+  font-size: 0.85rem;
+  font-weight: 900;
+  cursor: pointer;
+  transition: transform 180ms ease, filter 180ms ease;
+}
+
+.copy-email-button:hover {
+  transform: translateY(-2px);
+  filter: brightness(0.95);
+}
+
+.copy-email-button svg {
+  width: 1rem;
+  height: 1rem;
+  flex: 0 0 auto;
+}
+
+.copy-email-button span {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 480px) {
+  .copy-email-button {
+    width: 100%;
+  }
+}

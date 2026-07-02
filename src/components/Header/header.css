@@ -1,0 +1,10 @@
+.head{
+  margin-top:  10px;
+}
+
+@media (max-width: 480px) {
+  .head{
+    display: flex;
+    justify-content: center;
+  }
+}

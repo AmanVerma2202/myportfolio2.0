@@ -1,0 +1,14 @@
+@font-face {
+  font-family: 'name';
+  src: url('../../assets/name.otf') format('truetype');
+}
+
+.customfont {
+  font-family: 'name', sans-serif;
+}
+
+
+.name{
+  color: var(--page-accent);
+  margin: 20px;
+}

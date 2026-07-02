@@ -1,0 +1,201 @@
+/* Footer Styles */
+.footer-container {
+  position: relative;
+  width: 100%;
+  margin-top: 150px;
+  margin-bottom: 20px;
+  color: var(--page-text);
+  text-align: center;
+}
+
+/* Background grid */
+.footers-grid {
+  position: absolute;
+  left: 0;
+  bottom: -150px;
+  width: 100%;
+  height: 300px;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.footers-grid-img {
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  object-fit: cover;
+}
+
+/* Content Section */
+.footers-content {
+  margin-bottom: 150px;
+  position: relative;
+  gap: 10px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footers-heading {
+  font-size: 40px;
+  font-weight: 700;
+
+  line-height: 1.5;
+}
+
+.footers-heading .highlight {
+  color: var(--page-accent);
+}
+
+.footers-text {
+  max-width: 600px;
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  line-height: 1.8;
+  color: var(--page-muted);
+}
+
+/* Magic Button */
+.magic-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  background-color: var(--page-accent);
+  color: var(--page-bg);
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.3s;
+}
+
+.magic-button:hover {
+  transform: scale(1.05);
+  filter: brightness(0.94);
+}
+
+.magic-button.right-icon svg {
+  margin-left: 8px;
+}
+
+/* Footer Bottom Section */
+.footers-bottom {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.footers-author {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px ;
+  color: var(--page-muted);
+
+}
+
+
+.social-media-links {
+  display: flex;
+  gap: 20px;
+}
+
+/* From Uiverse.io by Pradeepsaranbishnoi */ 
+.social-links,.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-center span a {
+  text-decoration: none;
+}
+
+.social-btn {
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
+  font-family: 'Titillium Web', sans-serif;
+  color: var(--page-soft);
+  border: 1px solid var(--page-line);
+  border-radius: 10px;
+  background: var(--page-panel);
+  margin: 5px;
+  transition: 0.3s;
+  justify-content: center;
+}
+
+.social-btn svg {
+  height: 24px;
+  width: 24px;
+}
+
+.social-btn span {
+  color: var(--page-text);
+  width: 0px;
+  overflow: hidden;
+  transition: 0.3s;
+  text-align: center;
+  margin-left: 5px;
+}
+.social-btn span a{
+  color: var(--page-text);
+}
+
+.social-btn:hover {
+  width: 150px;
+  border-radius: 5px;
+}
+
+.social-btn:hover span {
+  padding: 2px;
+  width: 80px;
+}
+
+#twitter svg {
+  fill: #1da1f2;
+}
+
+#linkedin svg {
+  fill: #0587c4;
+}
+
+#github {
+  fill: var(--page-text);
+}
+#insta svg{
+  height: 32px;
+  width: 32px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+
+  .footer-container{
+    margin-top: 100px;
+  }
+  .footers-content{
+    margin-bottom: 100px;
+  }
+  .footers-heading {
+    font-size: 24px;
+  }
+
+  .footers-text {
+    font-size: 14px;
+    padding: 0 10px;
+  }
+
+  .footers-bottom {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+}

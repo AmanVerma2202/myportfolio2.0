@@ -1,0 +1,71 @@
+
+  
+  .card {
+    border: 1px solid rgb(108, 107, 107);
+    z-index: 1;
+    position: absolute;
+    width: 500px;
+    height: 350px;
+    border-radius: 10px;
+    transition: all 0.5s ease-out;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.4), black);
+    
+  }
+  
+  .card.one {
+    top: 0;
+    left: 0;
+    transform: perspective(1000px) rotateY(32deg) rotateX(2deg);
+    opacity: 0.3;
+    
+  }
+  
+  .card.two {
+    top: 40px;
+    left: 40px;
+    transform: perspective(1000px) rotateY(32deg) rotateX(2deg);
+    opacity: 0.6;
+    
+  }
+  
+  .card.three {
+    top: 80px;
+    left: 80px;
+    transform: perspective(1000px) rotateY(32deg) rotateX(2deg);
+    opacity: 0.9;
+    
+  }
+  
+  .card:hover {
+    
+    translate: 0px -23px;
+    opacity: 1;
+  }
+  
+  .cardImage {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    border-radius: 10px;
+  }
+  
+
+  @media (max-width: 768px) {
+
+  
+    .card {
+      max-width: 200px;
+      height: 180px;
+    }
+  }
+  
+  /* Mobile phones */
+  @media (max-width: 480px) {
+    .card {
+      max-width: 200px;
+      height: 160px;
+      
+    }
+  }

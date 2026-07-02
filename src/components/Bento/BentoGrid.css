@@ -1,0 +1,253 @@
+.bento-section {
+  max-width: 1220px;
+  margin: clamp(5rem, 10vw, 9rem) auto;
+  padding: 0 24px;
+}
+
+.bento-heading {
+  max-width: 860px;
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+
+.bento-heading p,
+.bento-kicker {
+  color: var(--page-accent);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.bento-heading h2 {
+  margin: 0.55rem 0 0;
+  color: var(--page-text);
+  font-size: 4rem;
+  line-height: 1;
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-areas:
+    "identity identity identity stack stack market"
+    "identity identity identity proof proof proof"
+    "earth earth signal signal focus focus"
+    "earth earth contact contact focus focus";
+  gap: 16px;
+}
+
+.bento-item {
+  position: relative;
+  min-height: 220px;
+  overflow: hidden;
+  border: 1px solid var(--page-line);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 12% 10%, color-mix(in srgb, var(--page-accent-2) 14%, transparent), transparent 12rem),
+    linear-gradient(135deg, var(--page-panel-strong), var(--page-panel));
+  box-shadow: 0 24px 70px var(--page-shadow);
+  color: var(--page-text);
+  isolation: isolate;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.bento-item:hover {
+  transform: translateY(-4px);
+  border-color: var(--page-chip-border);
+  box-shadow: 0 30px 86px var(--page-shadow);
+}
+
+.bento-item.has-image {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bento-item.has-image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(105deg, rgba(4, 7, 8, 0.86) 0%, rgba(4, 7, 8, 0.64) 48%, rgba(4, 7, 8, 0.16) 100%);
+}
+
+body.portfolio-light-mode .bento-item.has-image::before {
+  background:
+    linear-gradient(105deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.76) 52%, rgba(255, 255, 255, 0.2) 100%);
+}
+
+.bento-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 100%;
+  padding: clamp(1rem, 2vw, 1.45rem);
+}
+
+.bento-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.55rem;
+  height: 2.55rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--page-chip-border);
+  border-radius: 8px;
+  background: var(--page-chip);
+  color: var(--page-accent);
+}
+
+.bento-icon svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.bento-kicker {
+  margin: 0 0 0.55rem;
+}
+
+.bento-item h3 {
+  max-width: 17ch;
+  margin: 0;
+  color: var(--page-text);
+  font-size: 1.75rem;
+  line-height: 1.08;
+}
+
+.bento-identity h3 {
+  max-width: 18ch;
+  font-size: 4.2rem;
+  line-height: 0.94;
+}
+
+.bento-body {
+  max-width: 42rem;
+  margin: 1rem 0 0;
+  color: var(--page-muted);
+  font-size: 0.98rem;
+  line-height: 1.65;
+}
+
+.bento-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 1.2rem;
+}
+
+.bento-stats span {
+  padding: 0.48rem 0.62rem;
+  border: 1px solid var(--page-chip-border);
+  border-radius: 7px;
+  background: var(--page-chip);
+  color: var(--page-soft);
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
+.bento-identity { grid-area: identity; min-height: 470px; }
+.bento-stack { grid-area: stack; }
+.bento-market { grid-area: market; }
+.bento-proof { grid-area: proof; }
+.bento-focus { grid-area: focus; }
+.bento-signal { grid-area: signal; }
+.bento-earth { grid-area: earth; min-height: 450px; }
+.bento-contact { grid-area: contact; min-height: 220px; }
+
+.bento-market,
+.bento-signal,
+.bento-contact {
+  background:
+    radial-gradient(circle at 82% 18%, color-mix(in srgb, var(--page-accent-3) 18%, transparent), transparent 10rem),
+    linear-gradient(135deg, var(--page-panel-strong), var(--page-panel));
+}
+
+.bento-earth {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 50% 45%, color-mix(in srgb, var(--page-accent-2) 20%, transparent), transparent 14rem),
+    var(--page-bg);
+}
+
+@media (max-width: 1100px) {
+  .bento-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-areas:
+      "identity identity identity identity"
+      "stack stack market market"
+      "proof proof proof proof"
+      "earth earth focus focus"
+      "signal signal contact contact";
+  }
+
+  .bento-identity {
+    min-height: 390px;
+  }
+
+  .bento-heading h2,
+  .bento-identity h3 {
+    font-size: 3.2rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "identity"
+      "stack"
+      "market"
+      "proof"
+      "focus"
+      "signal"
+      "earth"
+      "contact";
+  }
+
+  .bento-item,
+  .bento-identity,
+  .bento-earth {
+    min-height: auto;
+  }
+
+  .bento-earth {
+    min-height: 330px;
+  }
+
+  .bento-item h3,
+  .bento-identity h3 {
+    max-width: 100%;
+  }
+
+  .bento-heading h2,
+  .bento-identity h3 {
+    font-size: 2.35rem;
+  }
+
+  .bento-item h3 {
+    font-size: 1.45rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .bento-grid {
+    gap: 10px;
+  }
+
+  .bento-content {
+    padding: 1rem;
+  }
+
+  .bento-heading {
+    text-align: left;
+  }
+
+  .bento-heading h2,
+  .bento-identity h3 {
+    font-size: 2rem;
+  }
+}

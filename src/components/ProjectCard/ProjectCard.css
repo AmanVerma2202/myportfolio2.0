@@ -1,0 +1,334 @@
+/* ============================================
+   Project Card — glass panel with animated
+   "aurora" border + cursor spotlight glow
+   ============================================ */
+
+.project-card {
+  --mx: 50%;
+  --my: 50%;
+  --angle: 0deg;
+
+  position: relative;
+  isolation: isolate;
+  border-radius: 16px;
+  margin: 10px;
+  font-family: "Poppins", sans-serif;
+
+  /* transform is on the wrapper so the glow layers below stay put */
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-card:hover,
+.project-card:focus-within {
+  transform: translateY(-8px);
+}
+
+/* Animated rotating border — the card's signature detail.
+   Hidden by default, fades in and starts spinning on hover. */
+@property --angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(
+    from var(--angle),
+    transparent 0%,
+    var(--page-accent) 15%,
+    transparent 35%
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  animation: rotate-border 3.2s linear infinite paused;
+  transition: opacity 0.4s ease;
+}
+
+.project-card:hover::before,
+.project-card:focus-within::before {
+  opacity: 1;
+  animation-play-state: running;
+}
+
+@keyframes rotate-border {
+  to {
+    --angle: 360deg;
+  }
+}
+
+/* Ambient drop shadow that deepens on hover */
+.project-card-inner {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border-radius: 16px;
+  border: 1px solid var(--page-line);
+  background: linear-gradient(135deg, var(--page-panel-strong), var(--page-panel));
+  box-shadow: 0 20px 55px var(--page-shadow);
+  padding: 18px;
+  overflow: hidden;
+  transition: box-shadow 0.45s ease, border-color 0.45s ease;
+}
+
+.project-card:hover .project-card-inner,
+.project-card:focus-within .project-card-inner {
+  box-shadow: 0 28px 70px var(--page-shadow), 0 0 0 1px var(--page-accent);
+  border-color: transparent;
+}
+
+/* Cursor spotlight: a soft radial glow that tracks the pointer */
+.project-card-inner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    280px circle at var(--mx) var(--my),
+    color-mix(in srgb, var(--page-accent) 16%, transparent),
+    transparent 70%
+  );
+  transition: opacity 0.4s ease;
+}
+
+.project-card:hover .project-card-inner::after,
+.project-card:focus-within .project-card-inner::after {
+  opacity: 1;
+}
+
+/* ---------- Thumbnail ---------- */
+.user-picture {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.project-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-card:hover .project-thumbnail,
+.project-card:focus-within .project-thumbnail {
+  transform: scale(1.08);
+}
+
+.picture-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, color-mix(in srgb, var(--page-bg) 55%, transparent), transparent 55%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.project-card:hover .picture-overlay,
+.project-card:focus-within .picture-overlay {
+  opacity: 1;
+}
+
+/* ---------- Body copy ---------- */
+.project-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+  flex: 1;
+}
+
+.projectTitle {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--page-accent);
+  letter-spacing: 0.2px;
+}
+
+.projectDes {
+  font-size: 0.98rem;
+  color: var(--page-muted);
+  line-height: 1.6;
+}
+
+/* ---------- Footer ---------- */
+.ProjectFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 22px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--page-line);
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.project-icons {
+  display: flex;
+}
+
+.project-icons img {
+  width: 26px;
+  height: 26px;
+  padding: 5px;
+  margin-left: -8px;
+  border: 1.5px solid var(--page-line);
+  border-radius: 50%;
+  background-color: var(--page-bg);
+  transition: transform 0.25s ease, z-index 0s;
+  position: relative;
+}
+
+.project-icons img:hover {
+  transform: translateY(-4px) scale(1.12);
+  z-index: 2;
+  border-color: var(--page-accent);
+}
+
+/* Link pills replace the old hover-only tooltip icons so actions
+   are visible and usable on touch devices too */
+.Projectlinks {
+  display: flex;
+  gap: 10px;
+}
+
+.link-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--page-line);
+  background: var(--page-bg);
+  color: var(--page-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.link-pill svg {
+  width: 15px;
+  height: 15px;
+  fill: currentColor;
+  transition: transform 0.3s ease;
+}
+
+.link-pill:hover,
+.link-pill:focus-visible {
+  color: var(--page-bg);
+  background: var(--page-accent);
+  border-color: var(--page-accent);
+  transform: translateY(-2px);
+}
+
+.link-pill:hover svg,
+.link-pill:focus-visible svg {
+  transform: rotate(-8deg) scale(1.1);
+}
+
+.link-pill-primary {
+  color: var(--page-accent);
+  border-color: var(--page-accent);
+}
+
+/* ---------- Scroll-reveal (driven by Projects.jsx) ---------- */
+.project-card {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project-card.is-visible:hover,
+.project-card.is-visible:focus-within {
+  transform: translateY(-8px);
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .project-card,
+  .project-thumbnail,
+  .project-card-inner,
+  .picture-overlay,
+  .link-pill,
+  .project-icons img {
+    transition: none !important;
+    animation: none !important;
+  }
+  .project-card {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- Media Queries ---------- */
+@media (max-width: 768px) {
+  .project-card-inner {
+    padding: 15px;
+  }
+
+  .projectTitle {
+    font-size: 1.2rem;
+  }
+
+  .projectDes {
+    font-size: 0.9rem;
+  }
+
+  .ProjectFooter {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .project-icons img {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-card {
+    margin: 5px;
+  }
+
+  .project-card-inner {
+    padding: 12px !important;
+  }
+
+  .projectTitle {
+    font-size: 1.05rem;
+  }
+
+  .projectDes {
+    font-size: 0.85rem;
+  }
+
+  .link-pill {
+    padding: 7px 11px;
+    font-size: 0.78rem;
+  }
+
+  .project-icons img {
+    width: 18px;
+    height: 18px;
+  }
+}

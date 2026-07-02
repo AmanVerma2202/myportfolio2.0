@@ -1,0 +1,424 @@
+/* .infinite-cards-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  background-color: var(--page-bg);
+  padding: 20px 0;
+  margin-top: 90px;
+}
+
+.infinite-cards-container h1{
+  font-size: 60px;
+  margin-bottom:90px;
+}
+
+.infinite-cards-slider {
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+.infinite-card {
+  width: 580px;
+  min-height: 380px;
+  background: var(--page-panel);
+  border-radius: 10px;
+  border: 1px solid var(--page-line);
+  color: var(--page-text);
+  padding: 20px;
+  margin: 0 15px;
+  text-align: center;
+  box-shadow: 0 6px 12px var(--page-shadow);
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.infinite-card-image {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  margin: 0 auto 10px;
+  object-fit: cover;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.infinite-card-message {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--page-muted);
+}
+
+.infinite-card-name {
+  font-size: 17px;
+  font-weight: bold;
+  color: var(--page-text);
+}
+
+.infinite-card-title {
+  padding-top: 15px;
+  font-size: 15px;
+  color: var(--page-accent);
+}
+
+.infinite-card-quote {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--page-muted);
+}
+
+.nameTitle{
+  min-height: 50px;
+}
+
+@media (max-width: 768px) {
+  .infinite-cards-container {
+    padding: 15px 0;
+  }
+
+  .infinite-cards-slider {
+    flex-wrap: nowrap;
+    gap: 10px;
+  }
+
+  .infinite-card {
+    width: 400px;
+    min-height: 320px;
+    padding: 15px;
+    margin: 0 10px;
+  }
+
+  .infinite-card-image {
+    width: 70px;
+    height: 70px;
+  }
+
+  .infinite-card-message {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .infinite-card-name {
+    font-size: 16px;
+  }
+
+  .infinite-card-title {
+    font-size: 15px;
+  }
+
+  .infinite-card-quote {
+    font-size: 15px;
+  }
+
+  .nameTitle {
+    min-height: 45px;
+  }
+}
+
+@media (max-width: 480px) {
+  .infinite-cards-container {
+    padding: 10px 0;
+  }
+
+  .infinite-cards-container h1{
+    font-size: 30px;
+    margin-bottom:30px;
+  }
+
+  .infinite-cards-slider {
+    flex-wrap: nowrap;
+    gap: 10px;
+  }
+
+  .infinite-card {
+    width: 300px;
+    min-height: 440px;
+    padding: 10px;
+    margin: 0 10px;
+  }
+
+  .infinite-card-image {
+    width: 60px;
+    height: 60px;
+  }
+
+  .infinite-card-message {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .infinite-card-name {
+    font-size: 15px;
+  }
+
+  .infinite-card-title {
+    font-size: 13px;
+  }
+
+  .infinite-card-quote {
+    font-size: 13px;
+  }
+
+  .nameTitle {
+    min-height: 40px;
+  }
+} */
+
+
+.infinite-cards-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  background-color: var(--page-bg);
+  padding: 20px 0;
+  margin-top: 90px;
+}
+
+/* ---------- Heading ---------- */
+.testimonials-heading {
+  text-align: center;
+  margin-bottom: 70px;
+  padding: 0 24px;
+}
+
+.testimonials-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--page-accent);
+  margin-bottom: 14px;
+}
+
+.testimonials-eyebrow::before,
+.testimonials-eyebrow::after {
+  content: "";
+  width: 24px;
+  height: 1px;
+  background: var(--page-accent);
+  opacity: 0.6;
+}
+
+.infinite-cards-container h1 {
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.accent-text {
+  color: var(--page-accent);
+  background: linear-gradient(
+    90deg,
+    var(--page-accent),
+    color-mix(in srgb, var(--page-accent) 55%, white)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ---------- Marquee edge fade ---------- */
+/* Softly fades cards in/out at the container edges instead of a hard cut,
+   which is what makes an infinite scroller read as "smooth". */
+.marquee-fade {
+  width: 100%;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 8%,
+    #000 92%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 8%,
+    #000 92%,
+    transparent 100%
+  );
+}
+
+/* ---------- Card ---------- */
+.infinite-card {
+  position: relative;
+  width: 480px;
+  min-height: 320px;
+  background: linear-gradient(160deg, var(--page-panel), var(--page-panel-strong));
+  border-radius: 14px;
+  border: 1px solid var(--page-line);
+  color: var(--page-text);
+  padding: 30px 26px 24px;
+  margin: 10px 15px;
+  text-align: center;
+  box-shadow: 0 14px 34px var(--page-shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  will-change: transform;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.infinite-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 46px var(--page-shadow), 0 0 0 1px var(--page-accent);
+  border-color: transparent;
+}
+
+.quote-mark {
+  width: 34px;
+  height: 26px;
+  fill: var(--page-accent);
+  opacity: 0.35;
+  margin-bottom: 12px;
+}
+
+.infinite-card-image {
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 18px;
+  padding: 3px;
+  background: linear-gradient(
+    135deg,
+    var(--page-accent),
+    color-mix(in srgb, var(--page-accent) 30%, transparent)
+  );
+  box-shadow: 0 6px 16px var(--page-shadow);
+}
+
+.infinite-card-quote {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--page-muted);
+  flex: 1;
+}
+
+.nameTitle {
+  min-height: 50px;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--page-line);
+  width: 100%;
+}
+
+.infinite-card-name {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--page-text);
+  margin: 0 0 4px;
+}
+
+.infinite-card-title {
+  font-size: 14px;
+  color: var(--page-accent);
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .infinite-card {
+    transition: none;
+  }
+}
+
+/* ---------- Media Queries ---------- */
+@media (max-width: 768px) {
+  .infinite-cards-container {
+    padding: 15px 0;
+  }
+
+  .testimonials-heading {
+    margin-bottom: 44px;
+  }
+
+  .infinite-cards-container h1 {
+    font-size: 2.2rem;
+  }
+
+  .infinite-card {
+    width: 380px;
+    min-height: 300px;
+    padding: 24px 20px 20px;
+    margin: 10px;
+  }
+
+  .infinite-card-image {
+    width: 62px;
+    height: 62px;
+  }
+
+  .infinite-card-quote {
+    font-size: 13.5px;
+    line-height: 1.65;
+  }
+
+  .infinite-card-name {
+    font-size: 16px;
+  }
+
+  .infinite-card-title {
+    font-size: 13.5px;
+  }
+
+  .nameTitle {
+    min-height: 45px;
+  }
+}
+
+@media (max-width: 480px) {
+  .infinite-cards-container {
+    padding: 10px 0;
+  }
+
+  .testimonials-heading {
+    margin-bottom: 32px;
+  }
+
+  .infinite-cards-container h1 {
+    font-size: 1.9rem;
+  }
+
+  .testimonials-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+  }
+
+  .infinite-card {
+    width: 280px;
+    min-height: 400px;
+    padding: 20px 16px 16px;
+    margin: 8px;
+  }
+
+  .infinite-card-image {
+    width: 56px;
+    height: 56px;
+  }
+
+  .infinite-card-quote {
+    font-size: 12.5px;
+    line-height: 1.55;
+  }
+
+  .infinite-card-name {
+    font-size: 15px;
+  }
+
+  .infinite-card-title {
+    font-size: 12.5px;
+  }
+
+  .nameTitle {
+    min-height: 40px;
+  }
+}
